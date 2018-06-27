@@ -14,11 +14,13 @@ html(lang='en')
     .wrapper.container
         .game#game
             .js-result.grid.grid--justifyCenter.game__results
-                .col
-                    img(src="").js-player1Result.game__playerResult
-                //- .js-arrow.game__compareArrow
-                .col
-                    img(src="").js-player2Result.game__playerResult
+                .col.col-3.game__playerResult
+                    p.js-p1Score.game__score 1
+                    img(src="").js-player1Result
+                .col-3.js-arrow.game__compareArrow
+                .col.col-3.game__playerResult
+                    p.js-p2Score.game__score 2
+                    img(src="").js-player2Result
             .js-choices
 
     script(src='js/main.js')

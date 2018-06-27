@@ -2,6 +2,26 @@
     width: 100vw;
     height: 100vh;
     background-color: aquamarine;
+    &__playerResult {
+        text-align: center;
+    }
+    &__compareArrow {
+        background-size: contain;
+        background-repeat: no-repeat;
+        &.a0 {
+            background-image: url('#{$imgPath}/red-arrow.png');
+        }
+        &.a1 {
+            background-image: url('#{$imgPath}/red-arrow.png');
+            transform: scale(-1) translateX(50%);
+        }
+        &.a2 {
+            background-image: url('#{$imgPath}/red-cross.png');
+        }
+    }
+    &__score {
+        text-align: center;
+    }
 }
 
 img[src=""] {

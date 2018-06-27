@@ -72,17 +72,19 @@ export default class Game {
         console.log(choice2);
         let p1ResultRef = document.querySelector('.js-player1Result');
         let p2ResultRef = document.querySelector('.js-player2Result');
+        let arrowRef    = document.querySelector('.js-arrow');
         let match       = (this.gameMap[choice1.name] || {})[choice2.name];
         p1ResultRef.setAttribute('src', choice1.imgPath);
         p2ResultRef.setAttribute('src', choice2.imgPath);
+        Utils.classRem(arrowRef, 'a0 a1 a2');
         if (match == 0) {
-            console.log('Tie!');
+            Utils.classAdd(arrowRef, 'a2');
         }
         else if (choice1.name == match) {
-            console.log('You win!');
+            Utils.classAdd(arrowRef, 'a0');
         }
         else {
-            console.log('Computer wins');
+            Utils.classAdd(arrowRef, 'a1');
         }
     }
 
