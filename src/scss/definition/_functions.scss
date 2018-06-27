@@ -23,3 +23,25 @@
     flex-shrink: $shrink;
     flex-grow: $grow;
 }
+
+//- ### ### ### COLUMNS
+@mixin columns($type) {
+    $columns: 12;
+    $column-width: 8.3333%;
+    @for $i from 1 through $columns {
+      .col#{$type}-#{$i} {
+        @if $i == $columns {
+          flex-grow: 0;
+          flex-shrink: 0;
+          flex-basis: 100%;
+          width: 100%;
+          max-width: round($column-width * $i);
+        } @else {
+          flex-grow: 0;
+          flex-shrink: 1;
+          flex-basis: $column-width * $i;
+          max-width: $column-width * $i;
+        }
+      }
+    }
+  }

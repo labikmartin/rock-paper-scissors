@@ -1,6 +1,46 @@
 .grid {
     @include flex();
     margin: -5px;
+	&--spaced {
+        justify-content: space-between;
+    }
+    &--spcAround {
+        justify-content: space-around;
+    }
+    &--flexStart {
+        justify-content: flex-start;
+        flex: 1;
+    }
+    &--flexEnd {
+        justify-content: flex-end;
+    }
+    &--alignCenter {
+        align-items: center;
+    }
+    &--alignBaseline {
+        align-items: baseline;
+    }
+    &--alignStart {
+        align-items: flex-start;
+    }
+    &--alignEnd {
+        align-items: flex-end;
+    }
+    &--noWrap {
+        flex-wrap: nowrap;
+    }
+    &--grow {
+        flex-grow: 1;
+        > * {
+            flex-grow: 1;
+        }
+    }
+    &--m {
+        margin: -20px;
+        > .col {
+          padding: 20px;
+        }
+    }
 }
 
 .container {
@@ -9,4 +49,34 @@
 
 .col {
     padding: 5px;
+}
+
+@include columns('');
+
+@media #{$maxW-xl} {
+  @include columns('-xl');
+}
+
+@media #{$maxW-l} {
+  @include columns('-l');
+}
+
+@media #{$maxW-m} {
+  @include columns('-m');
+}
+
+@media #{$maxW-ms} {
+  @include columns('-ms');
+}
+
+@media #{$maxW-mxs} {
+  @include columns('-mxs');
+}
+
+@media #{$maxW-s} {
+  @include columns('-s');
+}
+
+@media #{$maxW-xs} {
+  @include columns('-xs');
 }

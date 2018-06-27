@@ -11,12 +11,14 @@ html(lang='en')
     link(href='css/main.css', rel='stylesheet')
 
   body
-    .wrapper
+    .wrapper.container
         .game#game
-            .js-result.game__results
-                img(src="").js-player1Result.game__playerResult
-                .js-arrow.game__compareArrow
-                img(src="").js-player2Result.game__playerResult
+            .js-result.grid.grid--justifyCenter.game__results
+                .col
+                    img(src="").js-player1Result.game__playerResult
+                //- .js-arrow.game__compareArrow
+                .col
+                    img(src="").js-player2Result.game__playerResult
             .js-choices
 
     script(src='js/main.js')
