@@ -11,20 +11,21 @@ requireAll(require.context('../templates/', false, /\.pug$/));
 //- APP
 //- ### ### ### ### ### ### ###
 
-//- ### JAVASCRIPT MODULES
-import Utils from './utils';
-
 //- ### ### ### IMPORT APPLICATION COMPONENTS
+import Game from './controllers/GameController';
 
 //- ### ### ### MAIN APPLICATION
 
-const appMain = {
-
+class AppMain {
+    constructor() {
+        this.game;
+        this.initialize();
+    }
     //- ### INSTANCIATE COMPONENTS + INICIALIZE EVENTS + FUNCTIONS
     initialize() {
-      console.log('Hello world');
+        this.game = new Game(['rock', 'paper', 'scissors']);
     }
 };
 
 //- ### ### ### INITIALIZE APPLICATION
-appMain.initialize();
+const app = new AppMain();
