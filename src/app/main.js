@@ -14,6 +14,8 @@ requireAll(require.context('../templates/', false, /\.pug$/));
 //- ### ### ### IMPORT APPLICATION COMPONENTS
 import Game from './controllers/GameController';
 
+import Choice from './models/ChoiceModel';
+
 //- ### ### ### MAIN APPLICATION
 
 class AppMain {
@@ -23,7 +25,11 @@ class AppMain {
     }
     //- ### INSTANCIATE COMPONENTS + INICIALIZE EVENTS + FUNCTIONS
     initialize() {
-        this.game = new Game(['rock', 'paper', 'scissors']);
+        this.game = new Game([
+                new Choice('rock', '../images/rock.png'),
+                new Choice('paper', '../images/paper.png'),
+                new Choice('scissors', '../images/scissors.png')
+            ]);
     }
 };
 
