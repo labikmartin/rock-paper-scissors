@@ -1,0 +1,25 @@
+//- ### ### ### SIZE
+@mixin size($width, $height: false) {
+  width: $width;
+  height: if($height, $height, $width);
+}
+
+//- ### ### ### MAX WIDTH / HEIGHT
+@mixin maxSize($width, $height: false) {
+    max-width: $width;
+    max-height: if($height, $height, $width);
+}
+
+//- ### ### ### FLEXBOX
+@mixin flex($direction: row, $wrap: wrap, $justify: center) {
+    display: flex;
+    flex-direction: $direction;
+    flex-wrap: $wrap;
+    justify-content: $justify;
+}
+
+@mixin flexItem($basis: auto, $shrink: 1, $grow: 0) {
+    flex-basis: $basis;
+    flex-shrink: $shrink;
+    flex-grow: $grow;
+}

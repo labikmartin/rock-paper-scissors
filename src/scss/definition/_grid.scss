@@ -1,0 +1,12 @@
+.grid {
+    @include flex();
+    margin: -5px;
+}
+
+.container {
+    max-width: 95%;
+}
+
+.col {
+    padding: 5px;
+}
