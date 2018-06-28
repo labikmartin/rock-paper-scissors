@@ -11,7 +11,7 @@
         background-repeat: no-repeat;
         &.a0 {
             background-image: url('#{$imgPath}/red-arrow.png');
-            transform: scale(-1); //translateX(50%)
+            transform: scale(-1);
         }
         &.a1 {
             background-image: url('#{$imgPath}/red-arrow.png');

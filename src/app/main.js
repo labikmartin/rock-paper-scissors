@@ -26,9 +26,9 @@ class AppMain {
     //- ### INSTANCIATE COMPONENTS + INICIALIZE EVENTS + FUNCTIONS
     initialize() {
         this.game = new Game([
-                new Choice('rock', '../images/rock.png'),
-                new Choice('paper', '../images/paper.png'),
-                new Choice('scissors', '../images/scissors.png')
+                new Choice('rock', 'images/rock.png'),
+                new Choice('paper', 'images/paper.png'),
+                new Choice('scissors', 'images/scissors.png')
             ]);
     }
 };
