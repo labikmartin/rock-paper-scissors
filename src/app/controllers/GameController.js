@@ -5,6 +5,10 @@ import _ from 'lodash';
 import Utils from './../utils';
 
 
+/**
+ * Order in Array is crucial for game to work.
+ * You need to have Array of Choices ordered in a way, that next Choice will win over previous Choice.
+ */
 export default class Game {
     constructor(choices = []) {
         this.resultRef    = document.querySelector('.js-result');
@@ -61,18 +65,6 @@ export default class Game {
             });
     }
 
-    generateChoicesButtons() {
-        let template = '';
-        this.choices.forEach((choice = Choice) => {
-            template += `
-                <a class="js-roundStart game__choice col" data-choice="${choice.name}">
-                    <img src="${choice.imgPath}">
-                </a>
-            `
-        });
-        this.choicesRef.innerHTML = template;
-    }
-
     generateGameMap(choices = []) {
         choices.forEach((choice = new Choice(), i) => {
             this.gameMap[choice.name] = {};
@@ -90,6 +82,18 @@ export default class Game {
                 }
             }
         });
+    }
+
+    generateChoicesButtons() {
+        let template = '';
+        this.choices.forEach((choice = Choice) => {
+            template += `
+                <a class="js-roundStart game__choice col" data-choice="${choice.name}">
+                    <img src="${choice.imgPath}">
+                </a>
+            `
+        });
+        this.choicesRef.innerHTML = template;
     }
 
     compareChoices(choice1 = new Choice(), choice2 = new Choice()) {
