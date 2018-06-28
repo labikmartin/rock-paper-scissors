@@ -1,22 +1,56 @@
 .game {
-    width: 100vw;
-    height: 100vh;
-    background-color: aquamarine;
+    &__results {
+        padding-bottom: 60px;
+    }
     &__playerResult {
         text-align: center;
     }
     &__compareArrow {
         background-size: contain;
+        background-position: center;
         background-repeat: no-repeat;
         &.a0 {
             background-image: url('#{$imgPath}/red-arrow.png');
+            transform: scale(-1); //translateX(50%)
         }
         &.a1 {
             background-image: url('#{$imgPath}/red-arrow.png');
-            transform: scale(-1) translateX(50%);
         }
         &.a2 {
             background-image: url('#{$imgPath}/red-cross.png');
+        }
+    }
+    &__choices {
+        padding-bottom: 50px;
+    }
+    &__choice {
+        width: 80px;
+        cursor: pointer;
+        &:hover img {
+            box-shadow: 0px 0px 5px 5px rgba($black, .4);
+            opacity: 1;
+        }
+        &:active img {
+            box-shadow: none;
+            opacity: 1;
+        }
+        img {
+            border-radius: 100%;
+            opacity: .8;
+            transition: opacity .3s linear, box-shadow .3s linear;
+            @media (min-aspect-ratio: 2/1) {
+                max-width: 8vh;
+                height: auto;
+            }
+        }
+    }
+    &__playerResult {
+        img {
+            width: 254px;
+            height: auto;
+            @media (min-aspect-ratio: 2/1) {
+                max-width: 11vh;
+            }
         }
     }
     &__score {

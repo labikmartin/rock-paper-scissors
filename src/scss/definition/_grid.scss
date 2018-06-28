@@ -44,7 +44,15 @@
 }
 
 .container {
+    margin: auto;
     max-width: 95%;
+}
+
+.wrapper {
+    width: 100vw;
+    min-height: 100vh;
+    padding-bottom: 30px;
+    background-color: aquamarine;
 }
 
 .col {

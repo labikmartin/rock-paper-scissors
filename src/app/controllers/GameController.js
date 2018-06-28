@@ -7,7 +7,16 @@ import Utils from './../utils';
 
 export default class Game {
     constructor(choices = []) {
+        this.resultRef    = document.querySelector('.js-result');
+        this.initTitleRef = document.querySelector('.js-initTitle');
+        this.gameTitleRef = document.querySelector('.js-gameTitle');
         this.choicesRef = document.querySelector('.js-choices');
+        this.restartRoundBtn = document.querySelector('.js-restart');
+
+        this.score = {
+            p1: 0,
+            p2: 0
+        }
         this.choices = choices;
         this.gameMap = {};
         this.registerListeners();
@@ -17,12 +26,14 @@ export default class Game {
     registerListeners() {
         document.addEventListener('DOMContentLoaded', () => {
             this.onRoundStart();
+            this.onRestartGame();
         })
     }
 
     onInit() {
         this.generateGameMap(this.choices);
         this.generateChoicesButtons();
+        this.createGameTitle();
     }
 
     onRoundStart() {
@@ -31,17 +42,32 @@ export default class Game {
             let startRoundBtn = startRoundBtns[i];
             startRoundBtn && startRoundBtn
                 .addEventListener('click', (e) => {
-                    let choice = e.target.getAttribute('data-choice');
+                    let choice = e.currentTarget.getAttribute('data-choice');
                     this.gameRound(choice);
                 });
         }
+    }
+
+    onRestartGame() {
+        let restartRoundBtn = this.restartRoundBtn;
+        restartRoundBtn && restartRoundBtn
+            .addEventListener('click', (e) => {
+                for (const key in this.score) {
+                    this.score[key] = 0;
+                }
+                Utils.classAdd(restartRoundBtn, 'h-hide');
+                Utils.classAdd(this.resultRef, 'h-hide');
+                Utils.classRem(this.initTitleRef, 'h-hide');
+            });
     }
 
     generateChoicesButtons() {
         let template = '';
         this.choices.forEach((choice = Choice) => {
             template += `
-                <a class="js-roundStart btn" data-choice="${choice.name}">${choice.formattedName}</a>
+                <a class="js-roundStart game__choice col" data-choice="${choice.name}">
+                    <img src="${choice.imgPath}">
+                </a>
             `
         });
         this.choicesRef.innerHTML = template;
@@ -64,14 +90,13 @@ export default class Game {
                 }
             }
         });
-        console.log(this.gameMap);
     }
 
     compareChoices(choice1 = new Choice(), choice2 = new Choice()) {
-        console.log(choice1);
-        console.log(choice2);
         let p1ResultRef = document.querySelector('.js-player1Result');
+        let p1ScoreRef  = document.querySelector('.js-p1Score');
         let p2ResultRef = document.querySelector('.js-player2Result');
+        let p2ScoreRef  = document.querySelector('.js-p2Score');
         let arrowRef    = document.querySelector('.js-arrow');
         let match       = (this.gameMap[choice1.name] || {})[choice2.name];
         p1ResultRef.setAttribute('src', choice1.imgPath);
@@ -81,18 +106,47 @@ export default class Game {
             Utils.classAdd(arrowRef, 'a2');
         }
         else if (choice1.name == match) {
+            this.score.p1 += 1;
             Utils.classAdd(arrowRef, 'a0');
         }
         else {
+            this.score.p2 += 1;
             Utils.classAdd(arrowRef, 'a1');
         }
+        p1ScoreRef.textContent = this.score.p1;
+        p2ScoreRef.textContent = this.score.p2;
     }
 
     gameRound(myChoiceName = 'string') {
-        let rng      = Math.floor(Math.random() * this.choices.length);
-        let aiChoice = this.choices[rng];
-        let myChoice = _.find(this.choices, {name: myChoiceName});
+        let initTitleRef = this.initTitleRef;
+        let resultRef    = this.resultRef;
+        let rng          = Math.floor(Math.random() * this.choices.length);
+        let aiChoice     = this.choices[rng];
+        let myChoice     = _.find(this.choices, {name: myChoiceName});
+        if (myChoice) {
+            Utils.classRem(this.restartRoundBtn, 'h-hide');
+            Utils.classRem(resultRef, 'h-hide');
+            Utils.classAdd(initTitleRef, 'h-hide');
+        }
+        else {
+            Utils.classAdd(resultRef, 'h-hide');
+            Utils.classRem(initTitleRef, 'h-hide');
+        }
         this.compareChoices(myChoice, aiChoice);
+    }
+
+    createGameTitle() {
+        let title = '';
+        this.choices.forEach((choice = Choice, i) => {
+            if (i === this.choices.length - 1) {
+                title += `${choice.formattedName}`
+            }
+            else {
+                title += `${choice.formattedName}, `
+            }
+        });
+        title += ' game!'
+        this.gameTitleRef.textContent = title;
     }
 
 }

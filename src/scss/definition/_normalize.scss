@@ -14,3 +14,57 @@ img {
     max-width: 100%;
     max-height: 100%;
 }
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'LatoWebBold';
+}
+
+h1 {
+    font-size: 55px;
+    padding: 50px 0 60px;
+    @media #{$maxW-mxs} {
+        font-size: 45px;
+        padding: 40px 0 50px;
+    }
+}
+
+h2 {
+    font-size: 45px;
+    @media #{$maxW-mxs} {
+        font-size: 35px;
+    }
+}
+
+h3 {
+    font-size: 35px;
+    padding: 30px 0 40px;
+    @media #{$maxW-mxs} {
+        font-size: 25px;
+        padding: 20px 0 30px;
+    }
+}
+
+h4 {
+    font-size: 25px;
+    padding: 20px 0 30px;
+    @media #{$maxW-mxs} {
+        font-size: 20px;
+        padding: 15px 0 25px;
+    }
+}
+
+h5 {
+    font-size: 21px;
+    padding: 15px 0 20px;
+    @media #{$maxW-mxs} {
+        font-size: 18px;
+        padding: 10px 0 15px;
+    }
+}
+
+h6 {
+    font-size: 16px;
+    @media #{$maxW-mxs} {
+        font-size: 14px;
+    }
+}

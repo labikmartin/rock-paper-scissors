@@ -11,16 +11,35 @@ html(lang='en')
     link(href='css/main.css', rel='stylesheet')
 
   body
-    .wrapper.container
-        .game#game
-            .js-result.grid.grid--justifyCenter.game__results
-                .col.col-3.game__playerResult
-                    p.js-p1Score.game__score 1
+    .wrapper
+        .game.container
+            h1.js-gameTitle.h-textCenter
+
+            h2.js-initTitle.h-textCenter Start by choosing any choice
+
+            .js-result.grid.grid--justifyCenter.game__results.h-hide
+                .col.col-4.game__playerResult
+                    h5.js-p1Score.game__score
+
                     img(src="").js-player1Result
-                .col-3.js-arrow.game__compareArrow
-                .col.col-3.game__playerResult
-                    p.js-p2Score.game__score 2
+
+                    h4 You
+
+                .col-4.js-arrow.game__compareArrow
+
+                .col.col-4.game__playerResult
+                    h5.js-p2Score.game__score
+
                     img(src="").js-player2Result
-            .js-choices
+
+                    h4 Computer
+
+            h3.h-textCenter Choose your choice
+
+            .js-choices.grid.game__choices
+
+            .grid
+                .col
+                    a.js-restart.btn.h-hide Restart game
 
     script(src='js/main.js')

@@ -1,1 +1,12 @@
-
+.btn {
+    padding: 15px 20px;
+    display: inline-block;
+    background-color: tomato;
+    font-family: 'LatoWeb';
+    color: white;
+    transition: background-color .3s linear;
+    cursor: pointer;
+    &:hover {
+        background-color: mediumturquoise;
+    }
+}
