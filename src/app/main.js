@@ -3,9 +3,10 @@
 //- ### ### ### ### ### ### ###
 
 //- ### TEMPLATES BUILD
-function requireAll (r) { r.keys().forEach(r); }
+function requireAll(r) {
+  r.keys().forEach(r);
+}
 requireAll(require.context('../templates/', false, /\.pug$/));
-
 
 //- ### ### ### ### ### ### ### ###
 //- APP
@@ -19,19 +20,20 @@ import Choice from './models/ChoiceModel';
 //- ### ### ### MAIN APPLICATION
 
 class AppMain {
-    constructor() {
-        this.game;
-        this.initialize();
-    }
-    //- ### INSTANCIATE COMPONENTS + INICIALIZE EVENTS + FUNCTIONS
-    initialize() {
-        this.game = new Game([
-                new Choice('rock', 'images/rock.png'),
-                new Choice('paper', 'images/paper.png'),
-                new Choice('scissors', 'images/scissors.png')
-            ]);
-    }
-};
+  constructor() {
+    this.game;
+    this.initialize();
+  }
+  //- ### INSTANCIATE COMPONENTS
+  initialize() {
+    /* Add more Choices here (higher index wins over lower) */
+    this.game = new Game([
+      new Choice('rock', 'images/rock.png'),
+      new Choice('paper', 'images/paper.png'),
+      new Choice('scissors', 'images/scissors.png')
+    ]);
+  }
+}
 
 //- ### ### ### INITIALIZE APPLICATION
 const app = new AppMain();
